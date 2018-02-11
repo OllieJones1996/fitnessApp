@@ -41,12 +41,14 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.action_home:
+                    setTitle("HOME");
                     homeFragment fragment = new homeFragment();
                     android.support.v4.app.FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction1.replace(R.id.frameLayout, fragment, "homeFragment");
                     fragmentTransaction1.commit();
                     return true;
                 case R.id.action_graph:
+                    setTitle("GRAPH");
                     graphFragment fragment2 = new graphFragment();
                     android.support.v4.app.FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction2.replace(R.id.frameLayout, fragment2, "graphFragment");
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
-    
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
