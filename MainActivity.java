@@ -1,5 +1,7 @@
 package com.example.ollie.fitnessapp;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.hardware.SensorManager;
 import android.os.Bundle;
@@ -38,15 +40,19 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                case R.id.action_home:
+                    homeFragment fragment = new homeFragment();
+                    android.support.v4.app.FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction1.replace(R.id.frameLayout, fragment, "homeFragment");
+                    fragmentTransaction1.commit();
                     return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                case R.id.action_graph:
+                    graphFragment fragment2 = new graphFragment();
+                    android.support.v4.app.FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction2.replace(R.id.frameLayout, fragment2, "graphFragment");
+                    fragmentTransaction2.commit();
                     return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
+
             }
             return false;
         }
@@ -62,8 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     /////////////////////////////////////////////////////////////////
     @Override
-    protected void onStart()
-    {
+    protected void onStart() {
         super.onStart();
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null)
@@ -74,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
-
+    
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -138,6 +143,12 @@ public class MainActivity extends AppCompatActivity {
         });
         /////////////////////////////////////
 
+        ///on start up home fragment shown///
+
+
+
     }
+
+
 
 }
