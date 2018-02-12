@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
                     fragmentTransaction1.commit();
 
                     subscribe();
+                    dumpSubscriptionsList();
+
                     return true;
 
                 case R.id.action_graph:
@@ -76,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
                     fragmentTransaction2.commit();
 
                     cancelSubscription();
+                    listSubs();
+
                     return true;
 
             }
@@ -126,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         // [END subscribe_to_datatype]
     }
 
-    //@Override
+    //Override
     protected void onActivityResultFitness(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == REQUEST_OAUTH_REQUEST_CODE) {
