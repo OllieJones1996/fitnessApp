@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -18,7 +19,9 @@ import com.jjoe64.graphview.series.LineGraphSeries;
  */
 public class graphFragment extends Fragment {
 
-    private GraphView graph;
+    private GraphView graphSteps;
+    private GraphView graphHR;
+    private GraphView graphMood;
 
 
     public graphFragment() {
@@ -33,13 +36,30 @@ public class graphFragment extends Fragment {
     }
 
     public void graphPopulate(){
-        graph = (GraphView) this.getView().findViewById(R.id.graph);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+        graphSteps = (GraphView) this.getView().findViewById(R.id.graphSteps);
+        graphHR = (GraphView) this.getView().findViewById(R.id.graphHR);
+        graphMood = (GraphView) this.getView().findViewById(R.id.graphMood);
+
+        BarGraphSeries<DataPoint> series = new BarGraphSeries<>(new DataPoint[] {
                 new DataPoint(0, 1),
                 new DataPoint(1, 5),
                 new DataPoint(2, 3)
         });
-        graph.addSeries(series);
+        graphSteps.addSeries(series);
+
+        BarGraphSeries<DataPoint> series1 = new BarGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3)
+        });
+        graphHR.addSeries(series1);
+        BarGraphSeries<DataPoint> series2 = new BarGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3)
+        });
+        graphMood.addSeries(series2);
+
     }
 
     @Override

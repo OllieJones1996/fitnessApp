@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
                     GoogleSignIn.getLastSignedInAccount(this),
                     fitnessOptions);
         } else {
+            cancelSubscription();
             subscribe();
         }
 

@@ -26,7 +26,6 @@ public class historyAsyncTask extends AsyncTask<GoogleApiClient, Void, Void> {
 
         long total = 0;
 
-
         PendingResult<DailyTotalResult> result = Fitness.HistoryApi.readDailyTotal(params[0], DataType.TYPE_STEP_COUNT_CUMULATIVE);
         DailyTotalResult totalResult = result.await(30, TimeUnit.SECONDS);
         if (totalResult.getStatus().isSuccess()) {
