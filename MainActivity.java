@@ -58,8 +58,6 @@ public class MainActivity extends AppCompatActivity {
     private GoogleApiClient mGoogleApiClient;
     private GoogleSignInAccount mGoogleSignInAccount;
     private GoogleSignInOptions mGoogleSignInOptions;
-    private GoogleApiClient mGoogleApiClientReader;
-
 
     private static int RC_SIGN_IN = 9001;
     public String toast = "DEBUG";
@@ -149,6 +147,8 @@ public class MainActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+
     }
 
 
@@ -177,6 +177,10 @@ public class MainActivity extends AppCompatActivity {
                     fragmentTransaction2.replace(R.id.frameLayout, fragment2, "graphFragment");
                     fragmentTransaction2.commit();
                     return true;
+
+                case R.id.action_me:
+                    setTitle("ME");
+
 
             }
             return false;
@@ -258,30 +262,8 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == REQUEST_OAUTH_REQUEST_CODE) {
                 subscribe();
-                //sadasd
-                //sadasd
             }
         }
-    }
-
-    /**
-     * Fetches a list of all active subscriptions and log it. Since the logger for this sample
-     * also prints to the screen, we can see what is happening in this way.
-     */
-    private void dumpSubscriptionsList() {
-        // [START list_current_subscriptions]
-        Fitness.getRecordingClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                .listSubscriptions(DataType.TYPE_ACTIVITY_SAMPLES)
-                .addOnSuccessListener(new OnSuccessListener<List<Subscription>>() {
-                    @Override
-                    public void onSuccess(List<Subscription> subscriptions) {
-                        for (Subscription sc : subscriptions) {
-                            DataType dt = sc.getDataType();
-                            Log.i(TAG, "Active subscription for data type: " + dt.getName());
-                        }
-                    }
-                });
-        // [END list_current_subscriptions]
     }
 
     /**
@@ -313,8 +295,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     ///////////////////////////////////////////////////////////
-
-
 
 
 

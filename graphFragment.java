@@ -47,7 +47,7 @@ public class graphFragment extends Fragment {
         });
         graphSteps.addSeries(series);
 
-        BarGraphSeries<DataPoint> series1 = new BarGraphSeries<>(new DataPoint[] {
+        LineGraphSeries<DataPoint> series1 = new LineGraphSeries<>(new DataPoint[] {
                 new DataPoint(0, 1),
                 new DataPoint(1, 5),
                 new DataPoint(2, 3)
